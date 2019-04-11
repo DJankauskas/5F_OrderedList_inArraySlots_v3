@@ -18,8 +18,21 @@ public class OrderedList_inArraySlots
               \findMe is absent from this list.
      */
     public int indexOf( Integer findMe) {
-        return -32768; /* changing this value in 
-		  solutions will check the processing */
+        return indexOfInSlice(findMe, 0, size() - 1);
+    }
+
+    private int indexOfInSlice(Integer findMe, int start, int end) {
+        int middle = (start + end) / 2;
+        if (list_iAS.get(middle) == findMe) {
+            return middle;
+        }
+        else if (end - start < 1) {
+            return -1;
+        }
+        else if (findMe.compareTo(list_iAS.get(middle)) < 0) {
+            return indexOfInSlice(findMe, start, middle - 1);
+        }
+        else return indexOfInSlice(findMe, middle + 1, end);
     }
     
 
