@@ -17,9 +17,27 @@ public class OrderedList_inArraySlots
               \findMe in this list, or -1 if
               \findMe is absent from this list.
      */
+    //recursive version: calls helper function
     public int indexOf( Integer findMe) {
         return indexOfInSlice(findMe, 0, size() - 1);
     }
+
+    // public int indexOf(Integer findMe) {
+    //     int start = 0;
+    //     int end = size() - 1;
+    //     while (!(end - start < 1))  {
+    //         int middle = (start + end) / 2;
+    //         if (list_iAS.get(middle) == findMe) {
+    //             return middle;
+    //         }
+    //         else if (findMe.compareTo(list_iAS.get(middle)) < 0) {
+    //             end = middle - 1;
+    //         }
+    //         else start = middle + 1;
+    //     }
+    //     //"base case": loop is exited only if whole list has no member of value findMe
+    //     return -1;
+    // }
 
     private int indexOfInSlice(Integer findMe, int start, int end) {
         int middle = (start + end) / 2;
